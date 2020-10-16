@@ -2,6 +2,7 @@ library(httr)
 library(jsonlite)
 library(tidyquant)
 
+#DU ER KUUUULERE! 
 
 #ISS API
 res = GET("http://api.open-notify.org/astros.json")
