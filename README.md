@@ -4,7 +4,7 @@
 The R-script is called Term paper BAN400.R and it contains code run by a shiny app. To start the app one needs install all necesary packages. Further, one needs to run all the code in the script. Finally, when one runs the last code line in the script *shinyApp(ui, server)* the app will be initialized.  
 
 ## About the project
-In this project we use stock data from Yahoo finance which one can uploade direcly into R-studio by the use of the *tidyquant* library. This library has stock data from S&P600. We use the function *tq_get* to get the data from Yahoo. For instance, if we want stock data about apple, google and facebook we can call the following function:  
+In this project we use stock data from Yahoo finance which one can downloaded direcly into R-studio by the use of the *tidyquant* library. This library has stock data from S&P600. We use the function *tq_get* to get the data from Yahoo. For instance, if we want stock data about apple, google and facebook we can call the following function:  
 
 **c("AAPL", "GOOG", "FB") %>%
     tq_get(get = "stock.prices", from = "2016-01-01", to = "2017-01-01")**  
@@ -40,13 +40,13 @@ The fourth tab helps you check if the price of your favorite stock is above a ce
 
 
 ## What have we done to avoid errors?
-We have included various controll functions in the server so that the app will be less likely to crash if the user uses is wrongly.  
+We have included various controll functions in the server so that the app will be less likely to crash if the user uses gives wrong or invalid inputs.  
 
 ### Internet conection
-The app needs internet conection in order to download the data from Yahoo finance. Therefore, the first code the server runs check if the user has internet connection. If this is not the case, then the user will get a warning message which is visable in 5 seconds before the app closes. **To rerun the app one needs to press stop in the terminal in R studio and then run the last line of code in the script**
+The app needs internet conection in order to download the data from Yahoo finance. Therefore, the first code the server runs checks if the user has internet connection. If this is not the case, then the user will get a warning message which is visible in 5 seconds before the app closes. **To rerun the app one needs to press stop it in the terminal in RStudio and then run the last line of code in the script again**
 
 ### Validate input
-The Shiny app uses the *validate*-function to control that the user input is correct. Whenever it is possible for the user to fill in an input argument we have made a condition ensuring that the user will not crash the app. One example where we check if the user selected a stock and only one stock (and not more) as input is show bellow:  
+The Shiny app uses the *validate*-function to control that the user input is correct. Whenever it is possible for the user to fill in an input argument we have made a condition ensuring that the user will not crash the app. One example where we check if the user selected a stock and only one stock (and not more) as input is shown below:  
  **shiny::validate(
       need(stock !="" & length(stock) ==1, "Please select a stock (and only one stock)"))**  
       
