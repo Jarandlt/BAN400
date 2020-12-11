@@ -291,10 +291,11 @@ vizulize_relative_change <-function(stacked_df, type){
 #'
 #'The stock is colored with green if the time when the stock was above the
 #'threshold and with red when it was below the price threshold.
+#'@param data get_all_stock_data()
 #'@param stock a selected stock EG "M"
 #'@param price the threshold price  EG 10
-#'@example Visulize_stock_over_price("M",)
-Visulize_stock_over_price<-function(stock, price){
+#'@example Visulize_stock_over_price(get_all_stock_data(),"M",10)
+Visulize_stock_over_price<-function(data, stock, price){
   close_prices <-as.data.frame(data[,stock])
   close_prices<-data.frame(cbind(close_prices, data[,"Date"]))
   colnames(close_prices)<-c("Close_price", "Date")
@@ -467,7 +468,7 @@ server <- function(input, output, session) {
     
     
     output$Stock_vs_treshold<-renderPlot({
-      Visulize_stock_over_price(stock, price )
+      Visulize_stock_over_price(data, stock, price )
     })
   })
   
