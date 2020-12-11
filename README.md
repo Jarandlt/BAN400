@@ -29,11 +29,8 @@ Our Shiny app presents stock information in four tabs. Each tab shows different 
 In the first tab the user selects a stock and a time period. After some loading time the tab will visulize the price of this stock in the given time period. It will also visulize how the stock price has changed from day one and compare it with our self made index.    
 
 The second tab shows the best stocks the last 20 days while the third tab shows which stocks have preformed worst the last 20 days. The best/worst stocks are the ones that have highest/lowest relative change in price from day 1 to day 20:  
-$*(Price today - Price 20 days ago)/Price 20 days ago*.  
   
-
-
-
+![equation](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%28Price%20Today%20-%20Price%2020%20Days%20Ago%29%7D%7BPrice%2020%20Days%20Ago%7D)
 
 The fourth tab helps you check if the price of your favorite stock is above a certian threshold. If it is not one gets a warning message. The tab also visulize the close price of the chosen stock the last 20 trading days. The line in the graph will be green if the price has stayed above the threshold while it will be red in the time period it was/is under the threshold. 
 Note that you will not see the graph before you have selected a new stock and clicked on the *Check stock* button. Also, it migth take some time before the button works as the app needs to have time to upload the data.
