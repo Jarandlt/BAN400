@@ -9,26 +9,31 @@ In this project we use stock data from Yahoo finance which one can uploade direc
 **c("AAPL", "GOOG", "FB") %>%
     tq_get(get = "stock.prices", from = "2016-01-01", to = "2017-01-01")**  
 
-If one tries to get stock data about a stock that does not exsist or there is an error prohibits the function from extracting the data, the function will retun a warning and *NA*.    
+If one tries to get stock data about a stock that does not exsist or there is an error that prohibits the function from extracting the data, the function will retun a warning and *NA*.    
 
 ### Number of stocks included
 We have chosen not to include all stocks in S&P600. This is due to computing time. It takes a lot of time to upload stock prices for multiple dates for all 600 stocks. Therefore, in the beginning of the project we have specified that we only wish to include 100 stocks (*stocks_to_include=100*).  
 *(you can see which stocks we included by running the code: tq_index("SP600")$symbol[1:100]* 
 
 #### Our own index
-As we in this project pretend that there are only 100 stocks in the S&P600, we wish to compare them to an index which is based on these 100 stocks. Therefore, we make our own index where the daily price equals the sum of the prices of all the stocks divided by the number of stocks.  
+As this project pretends that there are only 100 stocks in the S&P600, we wish to compare them to an index which is based on these 100 stocks. Therefore, we make our own index where the daily price equals the sum of the prices of all the stocks divided by the number of stocks.  
 
 ### Fucntions in the project
-All self made functions in the projects have docstrings. This means that anyone is unsure about how a function works one can call docstring(*name of function*). In many functions there are also example(s) that gives the user the oportunity to vislize graphts outside the shiny app.  
+All self made functions in the projects have docstrings. This means that if the user is unsure about how a function works one can call: docstring(*name of function*). In many functions there is also example(s) that gives the user the oportunity to vislize graphs outside the Shiny app.  
 
-One important note is that on should run all functions before checking the docstring. This is because some functions depends on data from other functions.   
+One important note is that one should run all functions before checking the docstring. This is because some functions depends on data from other functions.   
 
 ## About our Shiny app
 Our Shiny app presents stock information in four tabs. Each tab shows different information.  
 
 In the first tab the user selects a stock and a time period. After some loading time the tab will visulize the price of this stock in the given time period. It will also visulize how the stock price has changed from day one and compare it with our self made index.    
 
-The second tab shows the user which stocks are the best stocks the last 20 days whicle the tab shows which stocks has been the worst the last 20 days. The best/worst stocks are the ones that has highest/lowest relative change in price from day 1 to day 20.  
+The second tab shows the best stocks the last 20 days while the third tab shows which stocks have preformed worst the last 20 days. The best/worst stocks are the ones that have highest/lowest relative change in price from day 1 to day 20:  
+$*(Price today - Price 20 days ago)/Price 20 days ago*.  
+  
+
+
+
 
 The fourth tab helps you check if the price of your favorite stock is above a certian threshold. If it is not one gets a warning message. The tab also visulize the close price of the chosen stock the last 20 trading days. The line in the graph will be green if the price has stayed above the threshold while it will be red in the time period it was/is under the threshold. 
 Note that you will not see the graph before you have selected a new stock and clicked on the *Check stock* button. Also, it migth take some time before the button works as the app needs to have time to upload the data.
